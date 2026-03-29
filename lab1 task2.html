@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота 1.2 - RegEx</title>
+</head>
+<body>
+    <h1>Перевірка роботи функцій RegEx</h1>
+    <p>Результати виконання функцій виведені в консоль (F12).</p>
+    
+    <script src="lab2.js"></script>
+
+    <script>
+        console.log("--- 1. isIPAddress ---");
+        console.log("192.168.0.1:", isIPAddress("192.168.0.1")); // true
+        console.log("256.0.0.1:", isIPAddress("256.0.0.1"));     // false (out of range)
+        console.log("abc.def.ghi:", isIPAddress("abc.def.ghi")); // false
+
+        console.log("\n--- 2. findRGBA ---");
+        let cssText = "background: rgba(255, 0, 0, 0.5); color: #FFF;";
+        console.log("Текст:", cssText);
+        console.log("Знайдено:", findRGBA(cssText)); // rgba(255, 0, 0, 0.5)
+
+        console.log("\n--- 3. findHexColor ---");
+        let colorText = "Colors are #ff0000 and #0f0 and invalid #ZZZ";
+        console.log("Текст:", colorText);
+        console.log("Знайдено HEX:", findHexColor(colorText)); // #ff0000
+
+        console.log("\n--- 4. findTags ---");
+        let htmlText = "<div> <img src='1.jpg'> <p>Text</p> <img src='2.png' alt='test'> </div>";
+        console.log("Текст:", htmlText);
+        console.log("Теги img:", findTags(htmlText, "img")); 
+        // Поверне масив з двома тегами <img>
+
+        console.log("\n--- 5. findPosNum ---");
+        let numText = "Temperature: -5, 10, 25.5, -100, 30";
+        console.log("Текст:", numText);
+        console.log("Додатні числа:", findPosNum(numText)); // [10, 25.5, 30]
+
+        console.log("\n--- 6. findDates ---");
+        let dateText = "Start date: 2023-10-01, End date: 2024-01-15. Invalid: 2023/10/01";
+        console.log("Текст:", dateText);
+        console.log("Дати:", findDates(dateText)); // ["2023-10-01", "2024-01-15"]
+
+        console.log("\n--- 7. findEmail ---");
+        let emailText = "Contacts: admin@example.com, support@site.org and fake@address";
+        console.log("Текст:", emailText);
+        console.log("Emails:", findEmail(emailText)); 
+    </script>
+</body>
+</html>
