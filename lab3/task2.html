@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Локалізована дата</title>
+    <style>
+        #currentDate {
+            margin-top: 15px;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        select, button {
+            padding: 5px 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <select id="langCode">
+        <option value="uk">Українська (uk)</option>
+        <option value="en">English (en)</option>
+    </select>
+    
+    <button onclick="showLocalizedDate()">Виконати</button> 
+
+    <div id="currentDate"></div>
+
+    <script src="task2.js"></script>
+
+</body>
+</html>

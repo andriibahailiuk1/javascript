@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поточна дата та час</title>
+    <style>
+        /* Трохи стилів для гарного відображення */
+        #currentDate {
+            margin-top: 15px;
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+        }
+        button {
+            padding: 8px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="showCurrentDateTime()">Виконати</button> 
+
+    <div id="currentDate"></div>
+
+    <script>
+        function showCurrentDateTime() {
+            // Масиви з українськими назвами місяців та днів тижня
+            const months = [
+                "січня", "лютого", "березня", "квітня", "травня", "червня",
+                "липня", "серпня", "вересня", "жовтня", "листопада", "грудня"
+            ];
+            
+            const daysOfWeek = [
+                "неділя", "понеділок", "вівторок", "середа", "четвер", "п'ятниця", "субота"
+            ];
+
+            // Отримуємо поточну дату
+            const now = new Date();
+
+            // Витягуємо окремі компоненти дати
+            const day = now.getDate();
+            const month = months[now.getMonth()];
+            const year = now.getFullYear();
+            const weekDay = daysOfWeek[now.getDay()];
+
+            // Отримуємо години та хвилини (додаємо нуль попереду, якщо число менше 10)
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+
+            // Формуємо рядок з HTML-тегами для виводу
+            const s = `
+                Дата:<br>
+                ${day} ${month} ${year} року<br>
+                День тижня: ${weekDay}<br>
+                Час: ${hours}:${minutes}
+            `;
+
+            // Записуємо сформований рядок у блок з id="currentDate"
+            const elem = document.getElementById('currentDate');
+            elem.innerHTML = s;
+        }
+    </script>
+        <script src="task1.js"></script>
+</body>
+</html>
